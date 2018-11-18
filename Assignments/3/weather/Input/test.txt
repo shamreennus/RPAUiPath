@@ -1,0 +1,13 @@
+Delhi 31-Oct-2018,31celcius,Precipitation,0%,Humidity,51%,Wind10 km/h
+
+Delhi 31-Oct-2018,31celcius,Precipitation,0%,Humidity,51%,Wind10 km/h
+
+Bengaluru 31-Oct-2018,30celcius,Precipitation,50%,Humidity,59%,Wind19 km/h
+
+London 30-Oct-2018,9celcius,Precipitation,0%,Humidity,74%,Wind19 km/h
+
+London 31-Oct-2018,13celcius,Precipitation,20%,Humidity,72%,Wind19 km/h
+
+Chicago 1-Nov-2018,11celcius,Precipitation,0%,Humidity,61%,Wind19 km/h
+
+Istanbul 2-Nov-2018,20celcius,Precipitation,10%,Humidity,77%,Wind23 km/h

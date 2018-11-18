@@ -1,0 +1,14 @@
+{
+  "name": "InsuranceConsumer",
+  "description": "This process will read data from queues to send insurance reminder",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.1.13",
+  "projectVersion": "1.0.6896.4724",
+  "packOptions": {},
+  "runtimeOptions": {}
+}

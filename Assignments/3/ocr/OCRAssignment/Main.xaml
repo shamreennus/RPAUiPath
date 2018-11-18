@@ -1,0 +1,149 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strDoc2" />
+    </Sequence.Variables>
+    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="strDoc1" />
+        <Variable x:TypeArguments="x:String" Default="D:\1_Edureka\RPA\Assignments\3\ocr\Input\" Name="filePath" />
+        <Variable x:TypeArguments="x:String" Name="strDoc3" />
+        <Variable x:TypeArguments="x:Boolean" Name="strDoc3Img1" />
+        <Variable x:TypeArguments="x:String" Name="strDoc4" />
+      </Sequence.Variables>
+      <ui:ReadPDFWithOCR DisplayName="Read PDF With OCR" FileName="D:\1_Edureka\RPA\Assignments\3\ocr\Input\499_m3_CaseStudy2_Input_Document1.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_1" Range="All" Text="[strDoc1]">
+        <ui:ReadPDFWithOCR.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <ui:MicrosoftOCR FilterRegion="{x:Null}" Text="{x:Null}" DisplayName="Microsoft OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_1" Image="[Image]" Language="English" Profile="Legacy" Scale="1" />
+          </ActivityFunc>
+        </ui:ReadPDFWithOCR.OCREngine>
+      </ui:ReadPDFWithOCR>
+      <ui:WriteTextFile DisplayName="Write text file" FileName="[filePath + &quot;test1.txt&quot;]" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strDoc1]" />
+      <ui:ReadPDFWithOCR DisplayName="Read PDF With OCR" FileName="D:\1_Edureka\RPA\Assignments\3\ocr\Input\499_m3_CaseStudy2_Input_Document2.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" Range="All" Text="[strDoc2]">
+        <ui:ReadPDFWithOCR.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <ui:MicrosoftOCR FilterRegion="{x:Null}" Text="{x:Null}" DisplayName="Microsoft OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_5" Image="[Image]" Language="English" Profile="Legacy" Scale="1" />
+          </ActivityFunc>
+        </ui:ReadPDFWithOCR.OCREngine>
+      </ui:ReadPDFWithOCR>
+      <ui:WriteTextFile DisplayName="Write text file" FileName="[filePath + &quot;test2.txt&quot;]" sap2010:WorkflowViewState.IdRef="WriteTextFile_4" Text="[strDoc2]" />
+      <ui:ReadPDFWithOCR DisplayName="Read PDF With OCR" FileName="D:\1_Edureka\RPA\Assignments\3\ocr\Input\499_m3_CaseStudy2_Input_Invoice1.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_3" Range="All" Text="[strDoc3]">
+        <ui:ReadPDFWithOCR.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <ui:MicrosoftOCR FilterRegion="{x:Null}" Text="{x:Null}" DisplayName="Microsoft OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_6" Image="[Image]" Language="English" Profile="Legacy" Scale="1" />
+          </ActivityFunc>
+        </ui:ReadPDFWithOCR.OCREngine>
+      </ui:ReadPDFWithOCR>
+      <ui:WriteTextFile DisplayName="Write text file" FileName="[filePath + &quot;test3.txt&quot;]" sap2010:WorkflowViewState.IdRef="WriteTextFile_5" Text="[strDoc3]" />
+      <ui:ReadPDFWithOCR DisplayName="Read PDF With OCR" FileName="D:\1_Edureka\RPA\Assignments\3\ocr\Input\499_m3_CaseStudy2_Input_Invoice2.pdf" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_4" Range="All" Text="[strDoc4]">
+        <ui:ReadPDFWithOCR.OCREngine>
+          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd:Rectangle, x:String))">
+            <ActivityFunc.Argument>
+              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+            </ActivityFunc.Argument>
+            <ui:MicrosoftOCR FilterRegion="{x:Null}" Text="{x:Null}" DisplayName="Microsoft OCR" ExtractWords="False" sap2010:WorkflowViewState.IdRef="MicrosoftOCR_7" Image="[Image]" Language="English" Profile="Legacy" Scale="1" />
+          </ActivityFunc>
+        </ui:ReadPDFWithOCR.OCREngine>
+      </ui:ReadPDFWithOCR>
+      <ui:WriteTextFile DisplayName="Write text file" FileName="[filePath + &quot;test4.txt&quot;]" sap2010:WorkflowViewState.IdRef="WriteTextFile_6" Text="[strDoc4]" />
+    </Sequence>
+    <sads:DebugSymbol.Symbol>dzpEOlwxX0VkdXJla2FcUlBBXEFzc2lnbm1lbnRzXDNcb2NyXE9DUkFzc2lnbm1lbnRcTWFpbi54YW1sLzsDdQ4CAQE/BXMQAgECQjZCYQIBA0cHUBsCATZRB1GqAQIBMVIHWxsCASdcB1yqAQIBIl0HZhsCARhnB2eqAQIBE2gHcRsCAQlyB3KqAQIBBEfYAUfjAQIBPkdDR5MBAgE9R80BR9IBAgE8TQ1N6AECATdRnAFRpwECATRRQFFkAgEyUtgBUuMBAgEvUkNSkwECAS5SzQFS0gECAS1YDVjoAQIBKFycAVynAQIBJVxAXGQCASNd1wFd4gECASBdQ12SAQIBH13MAV3RAQIBHmMNY+gBAgEZZ5wBZ6cBAgEWZ0BnZAIBFGjXAWjiAQIBEWhDaJIBAgEQaMwBaNEBAgEPbg1u6AECAQpynAFypwECAQdyQHJkAgEFTeIBTeUBAgE7Ta4BTbcBAgE5TcEBTcoBAgE4WOIBWOUBAgEsWK4BWLcBAgEqWMEBWMoBAgEpY+IBY+UBAgEdY64BY7cBAgEbY8EBY8oBAgEabuIBbuUBAgEObq4BbrcBAgEMbsEBbsoBAgEL</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="MicrosoftOCR_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ReadPDFWithOCR_1" sap:VirtualizedContainerService.HintSize="314,132" />
+      <sap2010:ViewStateData Id="WriteTextFile_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="MicrosoftOCR_5" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ReadPDFWithOCR_2" sap:VirtualizedContainerService.HintSize="314,132" />
+      <sap2010:ViewStateData Id="WriteTextFile_4" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="MicrosoftOCR_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ReadPDFWithOCR_3" sap:VirtualizedContainerService.HintSize="314,132" />
+      <sap2010:ViewStateData Id="WriteTextFile_5" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="MicrosoftOCR_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ReadPDFWithOCR_4" sap:VirtualizedContainerService.HintSize="314,132" />
+      <sap2010:ViewStateData Id="WriteTextFile_6" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,1280">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="358,1404">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="398,1484" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

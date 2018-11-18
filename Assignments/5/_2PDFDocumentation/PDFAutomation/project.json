@@ -1,0 +1,14 @@
+{
+  "name": "PDFAutomation",
+  "description": "read ocr pdf and send to excel",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.1.13",
+  "projectVersion": "1.0.6888.35481",
+  "packOptions": {},
+  "runtimeOptions": {}
+}

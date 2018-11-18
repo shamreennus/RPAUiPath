@@ -1,0 +1,454 @@
+﻿<Activity mc:Ignorable="sads sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:sd1="clr-namespace:System.Diagnostics;assembly=System"
+ xmlns:si="clr-namespace:System.IO;assembly=mscorlib"
+ xmlns:sl="clr-namespace:System.Linq;assembly=System.Core"
+ xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation"
+ xmlns:snm="clr-namespace:System.Net.Mail;assembly=System"
+ xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml"
+ xmlns:sxl="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:ul="clr-namespace:UiPath.Library;assembly=UiPath.Library"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="ui:Browser" Name="myBrowser" />
+      <Variable x:TypeArguments="x:String" Name="SearchCountry" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="SuppVatNum" />
+      <Variable x:TypeArguments="x:Int32" Name="Count" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <Sequence DisplayName="VerifyVat" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="ui:WorkbookApplication" Name="Input" />
+            <Variable x:TypeArguments="sd:DataTable" Name="InputDataTable" />
+            <Variable x:TypeArguments="ui:GenericValue" Name="DocNum" />
+            <Variable x:TypeArguments="ui:GenericValue" Name="Country" />
+            <Variable x:TypeArguments="ui:GenericValue" Name="Result" />
+          </Sequence.Variables>
+          <ui:OpenBrowser BrowserType="Chrome" DisplayName="Open browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" UiBrowser="[myBrowser]" Url="http://ec.europa.eu/taxation_customs/vies/">
+            <ui:OpenBrowser.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                </ActivityAction.Argument>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" Workbook="[Input]" WorkbookPath="Input\InputData.xlsx">
+                      <ui:ExcelApplicationScope.Body>
+                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <ui:ExcelReadRange AddHeaders="True" DataTable="[InputDataTable]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
+                              <ui:ExcelReadRange.Range>
+                                <InArgument x:TypeArguments="x:String">
+                                  <Literal x:TypeArguments="x:String" Value="" />
+                                </InArgument>
+                              </ui:ExcelReadRange.Range>
+                            </ui:ExcelReadRange>
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">2</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:ForEachRow DataTable="[InputDataTable]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                              <ui:ForEachRow.Body>
+                                <ActivityAction x:TypeArguments="sd:DataRow">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                  </ActivityAction.Argument>
+                                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                    <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                      <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Country" DisplayName="Get row item" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
+                                        <ui:GetRowItem.Value>
+                                          <OutArgument x:TypeArguments="ui:GenericValue">[Country]</OutArgument>
+                                        </ui:GetRowItem.Value>
+                                      </ui:GetRowItem>
+                                      <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Supplier VAT Number" DisplayName="Get row item" sap2010:WorkflowViewState.IdRef="GetRowItem_2" Row="[row]">
+                                        <ui:GetRowItem.Value>
+                                          <OutArgument x:TypeArguments="ui:GenericValue">[SuppVatNum]</OutArgument>
+                                        </ui:GetRowItem.Value>
+                                      </ui:GetRowItem>
+                                      <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[Country]" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                                        <Switch.Default>
+                                          <ui:CommentOut DisplayName="Comment out" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                            <ui:CommentOut.Body>
+                                              <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                                <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="Input Data not Correct" />
+                                              </Sequence>
+                                            </ui:CommentOut.Body>
+                                          </ui:CommentOut>
+                                        </Switch.Default>
+                                        <Assign x:Key="Austria" sap2010:WorkflowViewState.IdRef="Assign_1">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[SearchCountry]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">["AT-"+Country]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign x:Key="Belgium" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[SearchCountry]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">["BE-"+Country]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign x:Key="Czech Republic" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[SearchCountry]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">["CZ-"+Country]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </Switch>
+                                    </Sequence>
+                                    <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select item 'SELECT  countryCombobox'" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[SearchCountry]">
+                                      <ui:SelectItem.Items>
+                                        <scg:List x:TypeArguments="x:String" Capacity="32">
+                                          <x:String>--</x:String>
+                                          <x:String>AT-Austria</x:String>
+                                          <x:String>BE-Belgium</x:String>
+                                          <x:String>BG-Bulgaria</x:String>
+                                          <x:String>CY-Cyprus</x:String>
+                                          <x:String>CZ-Czech Republic</x:String>
+                                          <x:String>DE-Germany</x:String>
+                                          <x:String>DK-Denmark</x:String>
+                                          <x:String>EE-Estonia</x:String>
+                                          <x:String>EL-Greece</x:String>
+                                          <x:String>ES-Spain</x:String>
+                                          <x:String>FI-Finland</x:String>
+                                          <x:String>FR-France</x:String>
+                                          <x:String>GB-United Kingdom</x:String>
+                                          <x:String>HR-Croatia</x:String>
+                                          <x:String>HU-Hungary</x:String>
+                                          <x:String>IE-Ireland</x:String>
+                                          <x:String>IT-Italy</x:String>
+                                          <x:String>LT-Lithuania</x:String>
+                                          <x:String>LU-Luxembourg</x:String>
+                                          <x:String>LV-Latvia</x:String>
+                                          <x:String>MT-Malta</x:String>
+                                          <x:String>NL-The Netherlands</x:String>
+                                          <x:String>PL-Poland</x:String>
+                                          <x:String>PT-Portugal</x:String>
+                                          <x:String>RO-Romania</x:String>
+                                          <x:String>SE-Sweden</x:String>
+                                          <x:String>SI-Slovenia</x:String>
+                                          <x:String>SK-Slovakia</x:String>
+                                        </scg:List>
+                                      </ui:SelectItem.Items>
+                                      <ui:SelectItem.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="edca60aea81063136cfdbddb0487613d" Selector="&lt;webctrl id='countryCombobox' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:SelectItem.Target>
+                                    </ui:SelectItem>
+                                    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  number'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[SuppVatNum]">
+                                      <ui:TypeInto.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5cc9080eb534c1d9a03fbfc4b85b456f" Selector="&lt;webctrl id='number' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:TypeInto.Target>
+                                    </ui:TypeInto>
+                                    <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select item 'SELECT  requesterCountr...'" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[SearchCountry]">
+                                      <ui:SelectItem.Items>
+                                        <scg:List x:TypeArguments="x:String" Capacity="32">
+                                          <x:String>--</x:String>
+                                          <x:String>AT-Austria</x:String>
+                                          <x:String>BE-Belgium</x:String>
+                                          <x:String>BG-Bulgaria</x:String>
+                                          <x:String>CY-Cyprus</x:String>
+                                          <x:String>CZ-Czech Republic</x:String>
+                                          <x:String>DE-Germany</x:String>
+                                          <x:String>DK-Denmark</x:String>
+                                          <x:String>EE-Estonia</x:String>
+                                          <x:String>EL-Greece</x:String>
+                                          <x:String>ES-Spain</x:String>
+                                          <x:String>EU-MOSS Number</x:String>
+                                          <x:String>FI-Finland</x:String>
+                                          <x:String>FR-France</x:String>
+                                          <x:String>GB-United Kingdom</x:String>
+                                          <x:String>HR-Croatia</x:String>
+                                          <x:String>HU-Hungary</x:String>
+                                          <x:String>IE-Ireland</x:String>
+                                          <x:String>IT-Italy</x:String>
+                                          <x:String>LT-Lithuania</x:String>
+                                          <x:String>LU-Luxembourg</x:String>
+                                          <x:String>LV-Latvia</x:String>
+                                          <x:String>MT-Malta</x:String>
+                                          <x:String>NL-The Netherlands</x:String>
+                                          <x:String>PL-Poland</x:String>
+                                          <x:String>PT-Portugal</x:String>
+                                          <x:String>RO-Romania</x:String>
+                                          <x:String>SE-Sweden</x:String>
+                                          <x:String>SI-Slovenia</x:String>
+                                          <x:String>SK-Slovakia</x:String>
+                                        </scg:List>
+                                      </ui:SelectItem.Items>
+                                      <ui:SelectItem.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2bf20859f3e194bc386e4d5c5ab1a136" Selector="&lt;webctrl id='requesterCountryCombobox' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:SelectItem.Target>
+                                    </ui:SelectItem>
+                                    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  requesterNumber'" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="False" Text="[SuppVatNum]">
+                                      <ui:TypeInto.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="15f279a658262ed8c963ec91bcc09f2a" Selector="&lt;webctrl id='requesterNumber' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:TypeInto.Target>
+                                    </ui:TypeInto>
+                                    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  submit'" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="aca50270ce61e12867633d772769da6d" Selector="&lt;webctrl id='submit' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <Delay DisplayName="Delay 3 seconds" Duration="00:00:03" sap2010:WorkflowViewState.IdRef="Delay_1" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                                    <ui:GetFullText DisplayName="Get full text 'EXCEL7'" sap2010:WorkflowViewState.IdRef="GetFullText_2" IgnoreHidden="False">
+                                      <ui:GetFullText.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1eb92be1722cebe259d0c637d8be84ef" Selector="&lt;webctrl parentid='vatResponseFormTable' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:GetFullText.Target>
+                                      <ui:GetFullText.Text>
+                                        <OutArgument x:TypeArguments="ui:GenericValue">[Result]</OutArgument>
+                                      </ui:GetFullText.Text>
+                                    </ui:GetFullText>
+                                    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  vatRequest.html'" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                                      <ui:Click.CursorPosition>
+                                        <ui:CursorPosition Position="Center">
+                                          <ui:CursorPosition.OffsetX>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetX>
+                                          <ui:CursorPosition.OffsetY>
+                                            <InArgument x:TypeArguments="x:Int32" />
+                                          </ui:CursorPosition.OffsetY>
+                                        </ui:CursorPosition>
+                                      </ui:Click.CursorPosition>
+                                      <ui:Click.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e934686722c6c450dfc0eac52ce7bef3" Selector="&lt;webctrl aaname='Back' parentid='layout' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
+                                      </ui:Click.Target>
+                                    </ui:Click>
+                                    <ui:ExcelWriteCell Cell="[&quot;H&quot;+Count.ToString]" DisplayName="Write Cell" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Sheet1" Text="[Result]" />
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Int32">[Count+1]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:ForEachRow.Body>
+                            </ui:ForEachRow>
+                            <ui:CloseTab Browser="{x:Null}" DisplayName="Close tab" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ExcelApplicationScope.Body>
+                    </ui:ExcelApplicationScope>
+                  </Sequence>
+                </Sequence>
+              </ActivityAction>
+            </ui:OpenBrowser.Body>
+          </ui:OpenBrowser>
+        </Sequence>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Hi Sir&quot;+Environment.NewLine+&quot;Please find the Vat Validation check result attached&quot;+Environment.NewLine+&quot;Regards,&quot;]" DisplayName="Send SMTP Mail Message" Email="reena.shammi@gmail.com" EnableSSL="True" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="abcd" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="VAT validity result attached" To="shammi.reena@gmail.com">
+              <ui:SendMail.Files>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">D:\1_Edureka\RPA\Assignments\4\2_EUVAT\Module4-VatVerification\Vat-Verification\Input\InputData.xlsx</InArgument>
+                </scg:List>
+              </ui:SendMail.Files>
+            </ui:SendMail>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <sads:DebugSymbol.Symbol>d1lEOlwxX0VkdXJla2FcUlBBXEFzc2lnbm1lbnRzXDRcMl9FVVZBVFxNb2R1bGU0LVZhdFZlcmlmaWNhdGlvblxWYXQtVmVyaWZpY2F0aW9uXE1haW4ueGFtbFBKA9UCDwIBAVMJxAIUAgELxwINzQIbAgECWwvDAhwCAQzHAqcExwK/BAIBCsoCOsoCngECAQnHAogBxwKcAgIBCMcChQTHAqMEAgEHxwLIAscC4AICAQbHAscDxwLMAwIBBccC7APHAvwDAgEExwK7A8cCwQMCAQNbtgFbwwECAWFbyAFb9AECAWBhEcACHAIBDWITvwIeAgEOYxW+AjACAQ9jvAFjxQECAV5j0wFj6QECAV1pG7sCJgIBEGodcDECAVhxHXgmAgFUeR25Ai0CARK6Ah26AoQBAgERakxqXgIBW20jbVICAVpqtQFqvQECAVl2R3ZIAgFXc0hzTwIBVXk2eUgCAVJ/I7YCLgIBE4ABJa4BMAIBNq8BJdQBNQIBMtUBJdkBMwIBL9oBJYACNQIBK4ECJYUCMwIBKIYCJZQCMAIBJpUCJZUC7gECASSWAiWdAjYCASCeAiWsAjACAR6tAiWtAs8BAgEZrgIltQIuAgEUgQEnhQE3AgFMhgEnigE3AgFGiwEnrQEwAgE3rwHkAa8B9QECATPSAbgB0gHtAQIBNdcBuAHXAeMBAgEx1QG+AtUBzAICATDaAecB2gH4AQIBLP4BuAH+AfYBAgEugwK4AYMC7AECASqBAsgCgQLWAgIBKZICuAGSAuMBAgEnlQJTlQJdAgElmAK4AZgC9gECASObAlibAmACASGqArgBqgLzAQIBH60CPa0CXQIBHK0CwgGtAswBAgEbrQK0Aa0CvAECARqzAk+zAlgCARewAlCwAlcCARWDAVqDAWMCAVCBAcIBgQHJAQIBToEBaoEBcwIBTYgBWogBZgIBSoYBzgGGAdUBAgFIhgFqhgF/AgFHiwFqiwF1AgE4lQEpnAEyAgFCnQEppAEyAgE+pQEprAEyAgE6jQErkwE7AgE5mgFUmgFjAgFFlwFVlwFkAgFDogFUogFjAgFBnwFVnwFkAgE/qgFUqgFjAgE9pwFVpwFkAgE7</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ExcelReadRange_1" sap:VirtualizedContainerService.HintSize="551,59" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="551,60" />
+      <sap2010:ViewStateData Id="GetRowItem_1" sap:VirtualizedContainerService.HintSize="477,64" />
+      <sap2010:ViewStateData Id="GetRowItem_2" sap:VirtualizedContainerService.HintSize="477,64" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,93" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="336,217">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_2" sap:VirtualizedContainerService.HintSize="416,295" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Switch`1_2" sap:VirtualizedContainerService.HintSize="477,186" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="499,518">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SelectItem_1" sap:VirtualizedContainerService.HintSize="499,134" />
+      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="499,134" />
+      <sap2010:ViewStateData Id="SelectItem_2" sap:VirtualizedContainerService.HintSize="499,134" />
+      <sap2010:ViewStateData Id="TypeInto_3" sap:VirtualizedContainerService.HintSize="499,134" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="499,106" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="499,22" />
+      <sap2010:ViewStateData Id="GetFullText_2" sap:VirtualizedContainerService.HintSize="499,106" />
+      <sap2010:ViewStateData Id="Click_6" sap:VirtualizedContainerService.HintSize="499,106" />
+      <sap2010:ViewStateData Id="ExcelWriteCell_1" sap:VirtualizedContainerService.HintSize="499,87" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="499,60" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="521,2065">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="551,2213" />
+      <sap2010:ViewStateData Id="CloseTab_1" sap:VirtualizedContainerService.HintSize="551,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="573,2598">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="587,2707" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="609,2831">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="631,2955">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="645,3054" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="314,145">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,244.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,144.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,195.5 300,244.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,144.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,14 @@
+{
+  "name": "OCRAssignment",
+  "description": "image pdf invoice extraction",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.1.13",
+  "projectVersion": "1.0.6877.40953",
+  "packOptions": {},
+  "runtimeOptions": {}
+}

@@ -1,0 +1,14 @@
+{
+  "name": "WeatherInfo",
+  "description": "fetach from csv and search in google and put in flat file",
+  "main": "Main.xaml",
+  "dependencies": {},
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.1.13",
+  "projectVersion": "1.0.6875.40253",
+  "packOptions": {},
+  "runtimeOptions": {}
+}

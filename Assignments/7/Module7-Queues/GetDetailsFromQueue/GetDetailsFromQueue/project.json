@@ -1,0 +1,19 @@
+{
+  "name": "GetDetailsFromQueue",
+  "description": "GetDetailsFromQueue",
+  "main": "Main.xaml",
+  "dependencies": {
+    "Microsoft.Activities.Extensions": "2.0.6.9",
+    "UiPath.Core.Activities": "18.1.6603.13899",
+    "UiPath.Excel.Activities": "2.0.6526.16321",
+    "UiPath.Mail.Activities": "1.1.6562.21018"
+  },
+  "excludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "toolVersion": "18.1.1.13",
+  "projectVersion": "1.0.6888.1434",
+  "packOptions": {},
+  "runtimeOptions": {}
+}
