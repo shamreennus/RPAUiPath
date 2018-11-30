@@ -1,0 +1,33 @@
+{
+  "name": "Module2_Demo",
+  "description": "Module2-Demo",
+  "main": "Main.xaml",
+  "dependencies": {
+    "Microsoft.Activities.Extensions": "[2.0.6.9]",
+    "UiPath.UIAutomation.Activities": "[18.3.6897.22543]",
+    "UiPath.Credentials.Activities": "[1.1.6479.13204]",
+    "UiPath.Excel.Activities": "[2.4.6884.25683]",
+    "UiPath.Mail.Activities": "[1.2.6863.29868]",
+    "UiPath.PDF.Activities": "[1.2.6863.34697]",
+    "UiPath.System.Activities": "[18.3.6897.22524]"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "18.1.1.13",
+  "projectVersion": "1.0.6905.20279",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ]
+  },
+  "projectType": "Workflow",
+  "libraryOptions": {
+    "includeOriginalXaml": false,
+    "privateWorkflows": []
+  },
+  "arguments": {
+    "input": [],
+    "output": []
+  }
+}
